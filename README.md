@@ -11,7 +11,7 @@
 1. 新增C:\Java\FinalProject資料夾，並用eclipse開一個新的workspace，路徑是C:\Java\FinalProject  
 2. 在該workspace import "TWCulturalActivities"資料夾。其它資料夾可以丟到C:\Java\FinalProject內，裡面有些檔案是輸入輸出csv檔要用到的文件
 3. 新增server，context內增加的敘述“其它資料/Server and webxml設定/context config.txt”內可以複製貼上，設定完成後紅色叉叉就會消失  
-4. 執行專案內Java Resources/src/package35_Model內的Test1.class，會重新建立MAINTABLE和插入資料，這版本的主表格有新增一個NO欄位，執行專案內Java Resources/src/package35_A內的Test2.class，會建立含活動地點經緯度的LOCATIONTABLE  
+4. 執行專案內Java Resources/src/package35_Model內的Test1.class，會重新建立MAINTABLE和插入資料，這版本的主表格有新增一個NO欄位，執行專案內Java Resources/src/package35_內的Test2.class，會建立含活動地點經緯度的LOCATIONTABLE  
 5. MAINTABLE不需手動新增或修改，它的用途是把文化部的網路資料塞到資料庫，方便大家去查詢測試自己要做的功能  
 6. MAINTABLE欄位都是ACT_(活動)開頭，欄位詳細說明參見:https://opendata.culture.tw/upload/dataSource/2019-10-29/2adf6cae-fe57-4e01-a380-b45222e38ad1/7e69be410cfd8ba4f9695c5cab9bc87f.pdf
 7. 如果功能需要運算欄位資料，可以select MAINTABLE欄位資料放到另一個新增的表格，e.g. LOCATIONTABLE
