@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name></display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <resource-ref>
+    <description>Oracle DataSource Example</description>
+    <res-ref-name>jdbc/xe</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  
+  <servlet>
+    <description></description>
+    <display-name>SiteSearchServlet</display-name>
+    <servlet-name>SiteSearchServlet</servlet-name>
+    <servlet-class>SiteSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SiteSearchServlet</servlet-name>
+    <url-pattern>/SiteSearchServlet</url-pattern>
+  </servlet-mapping>
+
+    <servlet>
+    <description></description>
+    <display-name>StartDateSearchServlet</display-name>
+    <servlet-name>StartDateSearchServlet</servlet-name>
+    <servlet-class>StartDateSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StartDateSearchServlet</servlet-name>
+    <url-pattern>/StartDateSearchServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>EndDateSearchServlet</display-name>
+    <servlet-name>EndDateSearchServlet</servlet-name>
+    <servlet-class>EndDateSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EndDateSearchServlet</servlet-name>
+    <url-pattern>/EndDateSearchServlet</url-pattern>
+  </servlet-mapping>
+ 
+
+</web-app>

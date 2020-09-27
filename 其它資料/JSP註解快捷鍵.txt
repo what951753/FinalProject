@@ -1,0 +1,3 @@
+ <%-- --%> ctrl+shift+C
+ <!-- -- >      ctrl+shift+/
+一個是JSP 一個是HTML的

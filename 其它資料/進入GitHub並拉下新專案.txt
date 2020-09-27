@@ -1,0 +1,7 @@
+1. cd Documents/GitHub/FinalProjectBranch
+
+2. git remote -v
+
+3. git remote add upstream https://github.com/egoo0202/TWCulturalActivities.git
+
+4. git pull upstream main
