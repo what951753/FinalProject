@@ -31,6 +31,8 @@
 </head>
 
 <body>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <h1>商城首頁</h1>
     
    <%DAOPage daoPage = new DAOPage(); 
@@ -57,12 +59,16 @@
     	pageContext.getRequest().setAttribute("carSize", 0);
     }
     
+    
    %>
-   
+   	
+	
+ 	<FORM ACTION="./ProductArray">
     <h3>這是商城首頁的副標題之類的</h3>
     <div><span>購物車項目筆數： </span><span name="carSize"><%=request.getAttribute("carSize") %></span></div>
-    <input type="button" name="check" value="前往結帳頁面">
- 
+    <input type="submit" name="check" value="前往結帳"/>
+ 	</FORM>
+ 	
  	<FORM ACTION="./ProductArray">
 	<input type="hidden" name="method" value="changePage"/>
     <div><span>目前位於第&nbsp<%=currentPage%>&nbsp頁，共&nbsp<%=tpages %>&nbsp頁</span></div>
@@ -114,9 +120,15 @@
             </tr>
             
             <tr>
-            <td style="text-align: center;"><button type="submit" name="param1" 
-            value="<%=productItem.getProductTitle() %>" >加入購物車 </button></td>
+            <td class="td1" id="flagId">請選擇數量：
+<%-- 	         <input type="number" min="1" max="<%=productItem.getProductNum() %>" id="itemNum" name="orderNum" value="1"><td> --%>
             </tr>
+            
+            <tr>
+            <td style="text-align: center;"><button type="submit" name="param1" 
+            value="<%=productItem.getProductTitle() %>" id="checkBut" >加入購物車 </button></td>
+            </tr>
+            
             
         <% } %>
        
@@ -125,8 +137,6 @@
         </tbody>
     </table>
     </FORM>
-    
-    
     
     
     

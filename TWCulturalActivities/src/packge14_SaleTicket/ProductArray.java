@@ -40,7 +40,7 @@ public class ProductArray extends HttpServlet {
       try 
       {
         InitialContext ctxt = new InitialContext();
-        ds = (DataSource) ctxt.lookup("java:comp/env/jdbc/xe");  // for Oracle DB
+        ds = (DataSource) ctxt.lookup("java:comp/env/jdbc/XEPDB1");  // for Oracle DB
       }
       catch (NamingException ne)
       {
@@ -66,18 +66,27 @@ public class ProductArray extends HttpServlet {
 		String sCurrePage = request.getParameter("currentPage");
 		String param1 = request.getParameter("param1");
 		String check = request.getParameter("check");
+		String orderNum = request.getParameter("orderNum");
+		
+		
 //		String CarSize = request.getParameter("carSize");
 		System.out.println(method);
 		System.out.println(sCurrePage);
+		System.out.println(check);
 		
 //		System.out.println(request.getAttribute("currentPage"));
 		
 		if ("selectItem".equals(method)) {
 			request.setAttribute("currentPage", Integer.parseInt(sCurrePage));
-			gotoSubmitProcess(param1, request, response);
+			gotoSubmitProcess(orderNum, param1, request, response);
+			System.out.println("check="+check);
 		}else if("changePage".equals(method)) {
 			changePage(sCurrePage, request, response);
-		};
+		}else if(check != null){
+			System.out.println("進入not null");
+			
+			request.getRequestDispatcher("/14_order.jsp").forward(request, response);
+		}
 	}
 
 	/**
@@ -106,7 +115,7 @@ public class ProductArray extends HttpServlet {
 		request.getRequestDispatcher("/14_serach.jsp").forward(request, response);
 	}
 	
-	public void gotoSubmitProcess(String param1, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	public void gotoSubmitProcess(String orderNum, String param1, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	  {
 		request.setCharacterEncoding("UTF-8");  
 		response.setContentType("text/html");   
@@ -134,27 +143,42 @@ public class ProductArray extends HttpServlet {
 			
 
 			String act_nameString = param1;
+			String act_orderNum = orderNum;
+			
+			if (act_orderNum.equals("")) {
+				act_orderNum="0";
+			}
 			
 				
 			ProductItem ca = new ProductItem();
 			ca.setProdutTitle(act_nameString);
-			ca.setProductNum("1");
+			ca.setProductNum(act_orderNum);
+			System.out.println("order_num="+act_orderNum);
 			
 			
 			for(int i=0; i < carList.size(); i++) {
 				ProductItem order;
 				order = (ProductItem) carList.get(i);
 				
-				if (ca.getProdutTitle()==(order.getProdutTitle())) {
-					System.out.println(carList.remove(i));
+				if(order.getProductNum()=="0"){
+					carList.remove(i);
+				}else {
+					
+					
+//					if (ca.getProdutTitle()==(order.getProdutTitle())) {
+//						System.out.println(carList.remove(i));
+//						
+//					}
+					
+					if (ca.getProdutTitle().equals(order.getProdutTitle())) {
+						ca.setProductNum(Integer.toString(Integer.parseInt(ca.getProductNum())+Integer.parseInt(order.getProductNum())));
+						
+						System.out.println(carList.remove(i));
+					}
 					
 				}
 				
-				if (ca.getProdutTitle().equals(order.getProdutTitle())) {
-					ca.setProductNum(Integer.toString(Integer.parseInt(ca.getProductNum())+Integer.parseInt(order.getProductNum())));
-					
-					System.out.println(carList.remove(i));
-				}
+				
 			
 			}
 			synchronized(this) {

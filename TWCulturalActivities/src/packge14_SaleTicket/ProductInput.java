@@ -10,7 +10,8 @@ public class ProductInput {
 		DAOPage daoPage = new DAOPage();
 		
 
-		File file = new File("C:\\Users\\Student\\Desktop\\pen.csv");
+//		File file = new File("C:\\Users\\Student\\Desktop\\pen.csv");
+		File file = new File("C:\\Users\\user\\Desktop\\pen.csv");
 		int count = 0;
 
 		try (Connection connection = daoPage.getDataSourcePJ().getConnection();
